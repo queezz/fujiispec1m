@@ -39,7 +39,7 @@ R = "R{}".format(AXIS)
 configure logging
 """
 logger = logging.getLogger("Logging")
-logger.setLevel(10)
+logger.setLevel(50)
 formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(message)s")
 sh = logging.StreamHandler()
 sh.setFormatter(formatter)
@@ -54,7 +54,7 @@ class THR640:
             self._config = None
         else:
             self._config = configparser.ConfigParser()
-            self._config.open(config_file)
+            # self._config.open(config_file)
 
     def __del__(self):
         self.ser.close()
@@ -69,17 +69,13 @@ class THR640:
         self._readline()
         return
 
-    def goto(self, count: int = None, wavelength=None):
+    def goto(
+        self, count: int = None,
+    ):
         """
         Move the moter to the required position.
-        Wait until the movement finishes.
+        Wait until the processing by the controller is done. 
         """
-        if count is None and wavelength is None:
-            raise ValueError("Either of count and wavelength should be given.")
-
-        if count is None:
-            count = self._wavelength_to_count(wavelength)
-
         self._send_goto(count)
 
     def waitUntilReady(self):
@@ -149,14 +145,3 @@ class THR640:
         time.sleep(0.1)
         self.ser.write((RAMP + CR).encode("utf-8"))
         time.sleep(0.1)
-
-    ##TODO: 今後実装予定
-    def _wavelength_to_count(self, wavelength):
-        if self._config is None:
-            raise ValueError("Requires a configuration file to compute wavelength.")
-
-        order = self._config["calibration"]["order"]
-        coef = [
-            self._config["calibration"]["coefficient{}".format(o)] for o in range(order)
-        ][::-1]
-        return np.polyval(coef, x=count)

@@ -1,22 +1,24 @@
 import pyfli
-import time 
-class FLI: 
+import time
+
+
+class FLI:
     def __init__(self):
-        self.DEVICE = 'camera'
-        self.INTERFACE = 'usb'
-        self.FRAME_TYPE = "normal" # {'normal', 'dark', 'flood', 'flush'}
-        
-        fli_list = pyfli.FLIList(self.INTERFACE,self.DEVICE)
+        self.DEVICE = "camera"
+        self.INTERFACE = "usb"
+        self.FRAME_TYPE = "normal"  # {'normal', 'dark', 'flood', 'flush'}
+
+        fli_list = pyfli.FLIList(self.INTERFACE, self.DEVICE)
 
         if not fli_list:
             Exception("No device can be found")
-        
-        DEVICE_PATH, DEVICE_NAME = fli_list[0]
-        self.handle = self.FLIOpen(DEVICE_PATH,self.INTERFACE,self.DEVICE)
+
+        DEVICE_PATH, _ = fli_list[0]
+        self.handle = self.FLIOpen(DEVICE_PATH, self.INTERFACE, self.DEVICE)
 
     # mode: {0,1}, return value = xxkHZ
-    def getCameraModeString(self,mode: int):
-        return pyfli.getCameraModeString(self.handle,mode)
+    def getCameraModeString(self, mode: int):
+        return pyfli.getCameraModeString(self.handle, mode)
 
     # Get the remaining camera exposure time. exposure time given in milliseconds
     def getExposureStatus(self):
@@ -28,7 +30,7 @@ class FLI:
     def getTemperature(self):
         return pyfli.getTemperature(self.handle)
 
-    def grabFrame(self,out=None):
+    def grabFrame(self, out=None):
         """
         Grab frame.
         The size of the returned array is obtained from a call to `getReadoutDimensions`.
@@ -49,7 +51,7 @@ class FLI:
         """
 
         return pyfli.grabFrame(self.handle, out=out)
-    
+
     def getReadoutDimensions(self):
         """
         Get readout dimensions.
@@ -94,7 +96,7 @@ class FLI:
         """
         return pyfli.getArrayArea(self.handle)
 
-    def setFrameType(self,ftype):
+    def setFrameType(self, ftype):
         """
         Parameters
         ----------
@@ -106,7 +108,7 @@ class FLI:
             are guesses as they aren't documented.
             I guess 'dark' type is taking photo without opening shutter.
         """
-        pyfli.setFrameType(self.handle,ftype)
+        pyfli.setFrameType(self.handle, ftype)
 
     def setHBin(self, hbin):
         """
@@ -115,8 +117,7 @@ class FLI:
         hbin : int
             Bin horizontal dimension in pixels. The valid range is 1..16.
         """
-        pyfli.setHBin(self.handle,hbin)
-
+        pyfli.setHBin(self.handle, hbin)
 
     def setVBin(self, vbin):
         """
@@ -125,7 +126,7 @@ class FLI:
         vbin : int
             Bin vertical dimension in pixels. The valid range is 1..16.
         """
-        pyfli.setVBin(self.handle,vbin)
+        pyfli.setVBin(self.handle, vbin)
 
     def setImageArea(self, ul_x, ul_y, lr_x, lr_y):
         """
@@ -162,7 +163,6 @@ class FLI:
         """
         pyfli.setImageArea(self.handle, ul_x, ul_y, lr_x, lr_y)
 
-
     def exposeFrame(self):
         """
         Expose a frame for a given camera.
@@ -178,13 +178,13 @@ class FLI:
         pyfli.cancelExposure(self.handle)
 
     # you should give exposure time in milliseconds
-    def setExposureTime(self,time):
-        pyfli.setExposureTime(self.handle,time)
+    def setExposureTime(self, time):
+        pyfli.setExposureTime(self.handle, time)
 
-    def setTemperature(self,t):
-        pyfli.setTemperature(self.handle,t)
+    def setTemperature(self, t):
+        pyfli.setTemperature(self.handle, t)
 
-    def FLIOpen(self,device_path,interface,device):
+    def FLIOpen(self, device_path, interface, device):
         """
         Parameters
         ----------
@@ -207,7 +207,7 @@ class FLI:
         handle : int
             Handle with which to call device functions.
         """
-        return pyfli.FLIOpen(device_path,interface,device)
+        return pyfli.FLIOpen(device_path, interface, device)
 
     def FLIClose(self):
         pyfli.FLIClose(self.handle)
