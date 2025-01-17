@@ -1,0 +1,148 @@
+﻿#ifndef _DX2MEMMAP_H_INCLUDE
+#define _DX2MEMMAP_H_INCLUDE
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define ADDRESS_PRO_MODEL_NUMBER          0   //W
+#define ADDRESS_PRO_MODEL_INFORMATION     4   //L
+#define ADDRESS_PRO_VERSION_FW            6   //B
+#define ADDRESS_PRO_ID                    7   //B
+#define ADDRESS_PRO_BAUDRATE              8   //B
+#define ADDRESS_PRO_RETURN_DELAY_TIME     9   //B
+#define ADDRESS_PRO_OPERATING_MODE        11  //B
+#define ADDRESS_PRO_MOVING_THRESHOLD      17  //L
+#define ADDRESS_PRO_TEMP_LIMIT            21  //B
+#define ADDRESS_PRO_MAX_VOLTAGE_LIMIT     22  //W
+#define ADDRESS_PRO_MIN_VOLTAGE_LIMIT     24  //W
+#define ADDRESS_PRO_ACCELERATION_LIMIT    26  //L
+#define ADDRESS_PRO_TORQUE_LIMIT          30  //W
+#define ADDRESS_PRO_VELOCITY_LIMIT        32  //L
+#define ADDRESS_PRO_MAX_POSITION_LIMIT    36  //L
+#define ADDRESS_PRO_MIN_POSITION_LIMIT    40  //L
+#define ADDRESS_PRO_SHUTDOWN              48  //B
+#define ADDRESS_PRO_TORQUE_ENABLE         562 //B
+#define ADDRESS_PRO_LED_RED               563 //B
+#define ADDRESS_PRO_LED_GREEN             564 //B
+#define ADDRESS_PRO_LED_BLUE              565 //B
+#define ADDRESS_PRO_VELOCITY_I_GAIN       586 //W
+#define ADDRESS_PRO_VELOCITY_P_GAIN       588 //W
+#define ADDRESS_PRO_POSITION_P_GAIN       594 //W
+#define ADDRESS_PRO_GOAL_POSITION         596 //L
+#define ADDRESS_PRO_GOAL_VELOCITY         600 //L
+#define ADDRESS_PRO_GOAL_TORQUE           604 //W
+#define ADDRESS_PRO_GOAL_ACCELERATION     606 //L
+#define ADDRESS_PRO_MOVING                610 //B
+#define ADDRESS_PRO_PRESENT_POSITION      611 //L
+#define ADDRESS_PRO_PRESENT_VELOCITY      615 //L
+#define ADDRESS_PRO_PRESENT_CURRENT       621 //W
+#define ADDRESS_PRO_PRESENT_VOLTAGE       623 //W
+#define ADDRESS_PRO_PRESENT_TEMP          625 //B
+#define ADDRESS_PRO_STATUS_RETURN_LEVEL   891 //B
+#define ADDRESS_PRO_HARDWARE_ERROR_STATUS 892 //B
+
+#define ADDRESS_PROP_MODEL_NUMBER           0   //W
+#define ADDRESS_PROP_MODEL_INFORMATION      4   //L
+#define ADDRESS_PROP_VERSION_FW             6   //B
+#define ADDRESS_PROP_ID                     7   //B
+#define ADDRESS_PROP_BAUDRATE               8   //B
+#define ADDRESS_PROP_RETURN_DELAY_TIME      9   //B
+#define ADDRESS_PROP_DRIVE_MODE             10  //B
+#define ADDRESS_PROP_OPERATING_MODE         11  //B
+#define ADDRESS_PROP_SECONDARY_ID           12  //B
+#define ADDRESS_PROP_HOMING_OFFSET          20  //L
+#define ADDRESS_PROP_MOVING_THRESHOLD       24  //L
+#define ADDRESS_PROP_TEMP_LIMIT             31  //B
+#define ADDRESS_PROP_MAX_VOLTAGE_LIMIT      32  //W
+#define ADDRESS_PROP_MIN_VOLTAGE_LIMIT      34  //W
+#define ADDRESS_PROP_PWM_LIMIT              36  //W
+#define ADDRESS_PROP_CURRENT_LIMIT          38  //W
+#define ADDRESS_PROP_ACCELERATION_LIMIT     40  //L
+#define ADDRESS_PROP_VELOCITY_LIMIT         44  //L
+#define ADDRESS_PROP_MAX_POSITION_LIMIT     48  //L
+#define ADDRESS_PROP_MIN_POSITION_LIMIT     52  //L
+#define ADDRESS_PROP_EXTERNAL_PORT_MODE1    56  //B
+#define ADDRESS_PROP_EXTERNAL_PORT_MODE2    57  //B
+#define ADDRESS_PROP_EXTERNAL_PORT_MODE3    58  //B
+#define ADDRESS_PROP_EXTERNAL_PORT_MODE4    59  //B
+#define ADDRESS_PROP_SHUTDOWN               63  //B
+#define ADDRESS_PROP_TORQUE_ENABLE          512 //B
+#define ADDRESS_PROP_LED_RED                513 //B
+#define ADDRESS_PROP_LED_GREEN              514 //B
+#define ADDRESS_PROP_LED_BLUE               515 //B
+#define ADDRESS_PROP_STATUS_RETURN_LEVEL    516 //B
+#define ADDRESS_PROP_REGISTERED_INSTRUCTION 517 //B
+#define ADDRESS_PROP_HARDWARE_ERROR_STATUS  518 //B
+#define ADDRESS_PROP_VELOCITY_IGAIN         524 //W
+#define ADDRESS_PROP_VELOCITY_PGAIN         526 //W
+#define ADDRESS_PROP_POSITION_DGAIN         528 //W
+#define ADDRESS_PROP_POSITION_IGAIN         530 //W
+#define ADDRESS_PROP_POSITION_PGAIN         532 //W
+#define ADDRESS_PROP_FEEDFORWARD_2ND_GAIN   536 //W
+#define ADDRESS_PROP_FEEDFORWARD_1ST_GAIN   538 //W
+#define ADDRESS_PROP_BUS_WATCHDOG           546 //B
+#define ADDRESS_PROP_GOAL_PWM               548 //W
+#define ADDRESS_PROP_GOAL_CURRENT           550 //W
+#define ADDRESS_PROP_GOAL_VELOCITY          552 //L
+#define ADDRESS_PROP_PROF_ACCELERATION      556 //L
+#define ADDRESS_PROP_PROF_VELOCITY          560 //L
+#define ADDRESS_PROP_GOAL_POSITION          564 //L
+#define ADDRESS_PROP_REALTIME_TICK          568 //W
+#define ADDRESS_PROP_MOVING                 570 //B
+#define ADDRESS_PROP_MOVING_STATUS          571 //B
+#define ADDRESS_PROP_PRESENT_PWM            572 //W
+#define ADDRESS_PROP_PRESENT_CURRENT        574 //W
+#define ADDRESS_PROP_PRESENT_VELOCITY       576 //L
+#define ADDRESS_PROP_PRESENT_POSITION       580 //L
+#define ADDRESS_PROP_VELOCITY_TRAJECTORY    584 //L
+#define ADDRESS_PROP_POSITION_TRAJECTORY    588 //L
+#define ADDRESS_PROP_PRESENT_VOLTAGE        592 //W
+#define ADDRESS_PROP_PRESENT_TEMP           594 //B
+#define ADDRESS_PROP_EXTERNAL_PORT_DATA1    600 //W
+#define ADDRESS_PROP_EXTERNAL_PORT_DATA2    602 //W
+#define ADDRESS_PROP_EXTERNAL_PORT_DATA3    604 //W
+#define ADDRESS_PROP_EXTERNAL_PORT_DATA4    606 //W
+
+#define ADDRESS_X_MODEL_NUMBER            0   //W
+#define ADDRESS_X_MODEL_INFORMATION       4   //L
+#define ADDRESS_X_VERSION_FW              6   //B
+#define ADDRESS_X_ID                      7   //B
+#define ADDRESS_X_BAUDRATE                8   //B
+#define ADDRESS_X_RETURN_DELAY_TIME       9   //B
+#define ADDRESS_X_DRIVE_MODE              10  //B
+#define ADDRESS_X_OPERATING_MODE          11  //B
+#define ADDRESS_X_HOMING_OFFSET           20  //L
+#define ADDRESS_X_MAX_POSITION_LIMIT      48  //L
+#define ADDRESS_X_MIN_POSITION_LIMIT      52  //L
+#define ADDRESS_X_TORQUE_ENABLE           64  //B
+#define ADDRESS_X_LED_RED                 65  //B
+#define ADDRESS_X_STATUS_RETURN_LEVEL     69  //B
+#define ADDRESS_X_HARDWARE_ERROR_STATUS   70  //B
+#define ADDRESS_X_VELOCITY_IGAIN          76  //W
+#define ADDRESS_X_VELOCITY_PGAIN          78  //W
+#define ADDRESS_X_POSITION_DGAIN          80  //W
+#define ADDRESS_X_POSITION_IGAIN          82  //W
+#define ADDRESS_X_POSITION_PGAIN          84  //W
+#define ADDRESS_X_GOAL_PWM                100 //W
+#define ADDRESS_X_GOAL_CURRENT            102 //W
+#define ADDRESS_X_GOAL_VELOCITY           104 //L
+#define ADDRESS_X_PROF_ACCELERATION       108 //L
+#define ADDRESS_X_PROF_VELOCITY           112 //L
+#define ADDRESS_X_GOAL_POSITION           116 //L
+#define ADDRESS_X_MOVING                  122 //B
+#define ADDRESS_X_MOVING_STATUS           123 //B
+#define ADDRESS_X_PRESENT_PWM             124 //W
+#define ADDRESS_X_PRESENT_CURRENT         126 //W
+#define ADDRESS_X_PRESENT_VELOCITY        128 //L
+#define ADDRESS_X_PRESENT_POSITION        132 //L
+#define ADDRESS_X_VELOCITY_TRAJECTORY     136 //L
+#define ADDRESS_X_POSITION_TRAJECTORY     140 //L
+#define ADDRESS_X_PRESENT_VOLTAGE         144 //W
+#define ADDRESS_X_PRESENT_TEMP            146 //B
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif //_DX2MEMMAP_H_INCLUDE
